@@ -1,0 +1,659 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<meta name="theme-color" content="#050509">
+<meta name="description" content="AG HACKING — Official Telegram Channel">
+<title>AG HACKING // TELEGRAM</title>
+
+<style>
+@import url('https://fonts.googleapis.com/css2?family=Orbitron:wght@500;700;800;900&family=Inter:wght@400;500;600;700;800&display=swap');
+
+:root{
+    --bg:#03040a;
+    --panel:rgba(12,15,25,.78);
+    --line:rgba(255,255,255,.09);
+    --text:#f7f8ff;
+    --muted:#777f94;
+    --cyan:#22d3ee;
+    --purple:#8b5cf6;
+    --green:#39ff9a;
+}
+
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+}
+
+html{
+    scroll-behavior:smooth;
+}
+
+body{
+    min-height:100vh;
+    overflow:hidden;
+    background:var(--bg);
+    color:var(--text);
+    font-family:Inter,Arial,sans-serif;
+}
+
+/* BACKGROUND */
+
+canvas{
+    position:fixed;
+    inset:0;
+    width:100%;
+    height:100%;
+    z-index:-5;
+}
+
+.grid{
+    position:fixed;
+    inset:0;
+    z-index:-4;
+    pointer-events:none;
+    background-image:
+        linear-gradient(rgba(255,255,255,.025) 1px,transparent 1px),
+        linear-gradient(90deg,rgba(255,255,255,.025) 1px,transparent 1px);
+    background-size:42px 42px;
+    mask-image:linear-gradient(to bottom,black,transparent 90%);
+}
+
+.glow{
+    position:fixed;
+    width:420px;
+    height:420px;
+    border-radius:50%;
+    filter:blur(130px);
+    pointer-events:none;
+    z-index:-3;
+}
+
+.glow.one{
+    background:#7c3aed;
+    opacity:.18;
+    top:-220px;
+    left:-180px;
+}
+
+.glow.two{
+    background:#06b6d4;
+    opacity:.13;
+    right:-220px;
+    bottom:-180px;
+}
+
+/* TOP */
+
+.top{
+    position:fixed;
+    top:0;
+    left:0;
+    width:100%;
+    padding:18px 6%;
+    border-bottom:1px solid var(--line);
+    background:rgba(3,4,10,.58);
+    backdrop-filter:blur(20px);
+    z-index:10;
+}
+
+.top-inner{
+    max-width:1100px;
+    margin:auto;
+    display:flex;
+    align-items:center;
+    justify-content:space-between;
+}
+
+.logo{
+    display:flex;
+    align-items:center;
+    gap:11px;
+}
+
+.logo-box{
+    width:39px;
+    height:39px;
+    display:grid;
+    place-items:center;
+    border-radius:11px;
+    background:linear-gradient(135deg,var(--purple),var(--cyan));
+    color:white;
+    font-family:Orbitron,sans-serif;
+    font-size:11px;
+    font-weight:900;
+    box-shadow:0 0 25px rgba(139,92,246,.3);
+}
+
+.logo-text{
+    font-family:Orbitron,sans-serif;
+    font-size:12px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+.logo-text span{
+    color:var(--cyan);
+}
+
+.online{
+    display:flex;
+    align-items:center;
+    gap:7px;
+    color:#697185;
+    font-size:8px;
+    letter-spacing:2px;
+}
+
+.dot{
+    width:6px;
+    height:6px;
+    border-radius:50%;
+    background:var(--green);
+    box-shadow:0 0 12px var(--green);
+}
+
+/* MAIN */
+
+.main{
+    min-height:100vh;
+    padding:115px 20px 35px;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+}
+
+.card{
+    width:100%;
+    max-width:440px;
+    padding:35px 28px 30px;
+    text-align:center;
+    border:1px solid rgba(255,255,255,.1);
+    border-radius:28px;
+    background:
+        linear-gradient(
+            145deg,
+            rgba(255,255,255,.055),
+            rgba(255,255,255,.012)
+        );
+    backdrop-filter:blur(25px);
+    box-shadow:
+        0 35px 100px rgba(0,0,0,.45),
+        inset 0 0 50px rgba(139,92,246,.025);
+    animation:appear .8s ease both;
+}
+
+@keyframes appear{
+    from{
+        opacity:0;
+        transform:translateY(25px) scale(.97);
+    }
+    to{
+        opacity:1;
+        transform:translateY(0) scale(1);
+    }
+}
+
+/* TELEGRAM ICON */
+
+.telegram-icon{
+    width:92px;
+    height:92px;
+    margin:0 auto 23px;
+    border-radius:50%;
+    display:grid;
+    place-items:center;
+    position:relative;
+    background:linear-gradient(145deg,#22d3ee,#5865f2);
+    box-shadow:
+        0 0 35px rgba(34,211,238,.2),
+        0 0 70px rgba(139,92,246,.15);
+    animation:float 3s ease-in-out infinite;
+}
+
+.telegram-icon::before{
+    content:"";
+    position:absolute;
+    inset:-7px;
+    border:1px solid rgba(34,211,238,.22);
+    border-radius:50%;
+    animation:ring 2.5s infinite;
+}
+
+.telegram-icon::after{
+    content:"";
+    position:absolute;
+    inset:-16px;
+    border:1px solid rgba(139,92,246,.12);
+    border-radius:50%;
+    animation:ring 2.5s 1s infinite;
+}
+
+@keyframes float{
+    50%{
+        transform:translateY(-7px);
+    }
+}
+
+@keyframes ring{
+    0%{
+        transform:scale(.85);
+        opacity:.7;
+    }
+    100%{
+        transform:scale(1.2);
+        opacity:0;
+    }
+}
+
+.telegram-icon span{
+    font-size:40px;
+    transform:rotate(-10deg);
+}
+
+/* TEXT */
+
+.tag{
+    display:inline-block;
+    padding:7px 12px;
+    margin-bottom:17px;
+    border:1px solid rgba(34,211,238,.18);
+    border-radius:50px;
+    color:#6de5f4;
+    background:rgba(34,211,238,.035);
+    font-size:8px;
+    font-weight:800;
+    letter-spacing:2px;
+}
+
+h1{
+    font-family:Orbitron,sans-serif;
+    font-size:clamp(28px,8vw,42px);
+    letter-spacing:-1px;
+    font-weight:900;
+}
+
+h1 span{
+    background:linear-gradient(90deg,#fff,#c084fc,#22d3ee);
+    -webkit-background-clip:text;
+    background-clip:text;
+    color:transparent;
+}
+
+.subtitle{
+    margin:14px auto 0;
+    max-width:340px;
+    color:#747c90;
+    font-size:12px;
+    line-height:1.7;
+}
+
+/* STATUS */
+
+.channel-status{
+    margin:25px auto 20px;
+    display:flex;
+    justify-content:center;
+    gap:8px;
+    align-items:center;
+    color:#6e7689;
+    font-size:8px;
+    letter-spacing:1.5px;
+}
+
+.channel-status b{
+    color:#39ff9a;
+}
+
+/* INFO */
+
+.info{
+    display:grid;
+    grid-template-columns:1fr 1fr;
+    gap:10px;
+    margin:22px 0;
+}
+
+.info-box{
+    padding:15px 8px;
+    border:1px solid var(--line);
+    border-radius:13px;
+    background:rgba(255,255,255,.018);
+}
+
+.info-box strong{
+    display:block;
+    font-family:Orbitron,sans-serif;
+    font-size:13px;
+}
+
+.info-box span{
+    display:block;
+    margin-top:6px;
+    color:#626a7d;
+    font-size:7px;
+    letter-spacing:1.5px;
+    text-transform:uppercase;
+}
+
+/* BUTTON */
+
+.join{
+    width:100%;
+    display:flex;
+    align-items:center;
+    justify-content:center;
+    gap:10px;
+    padding:16px;
+    border-radius:13px;
+    text-decoration:none;
+    color:#03040a;
+    background:linear-gradient(90deg,#fff,#dffbff);
+    font-size:10px;
+    font-weight:900;
+    letter-spacing:1.5px;
+    box-shadow:0 0 35px rgba(34,211,238,.1);
+    transition:.3s;
+}
+
+.join:hover{
+    transform:translateY(-3px);
+    box-shadow:
+        0 15px 40px rgba(0,0,0,.35),
+        0 0 35px rgba(34,211,238,.15);
+}
+
+.join:active{
+    transform:scale(.97);
+}
+
+.note{
+    margin-top:15px;
+    color:#50586a;
+    font-size:8px;
+    letter-spacing:.5px;
+}
+
+/* FOOTER */
+
+.footer{
+    margin-top:27px;
+    color:#454c5d;
+    font-size:7px;
+    letter-spacing:1.5px;
+}
+
+.footer b{
+    color:#777f92;
+}
+
+/* MOBILE */
+
+@media(max-width:500px){
+
+    .top{
+        padding:14px 5%;
+    }
+
+    .online{
+        display:none;
+    }
+
+    .main{
+        padding:100px 15px 25px;
+    }
+
+    .card{
+        padding:30px 20px 25px;
+        border-radius:23px;
+    }
+
+    .telegram-icon{
+        width:82px;
+        height:82px;
+    }
+
+    .telegram-icon span{
+        font-size:34px;
+    }
+}
+</style>
+</head>
+
+<body>
+
+<canvas id="particles"></canvas>
+<div class="grid"></div>
+
+<div class="glow one"></div>
+<div class="glow two"></div>
+
+
+<!-- TOP BAR -->
+
+<div class="top">
+
+    <div class="top-inner">
+
+        <div class="logo">
+
+            <div class="logo-box">
+                AG
+            </div>
+
+            <div class="logo-text">
+                AG <span>HACKING</span>
+            </div>
+
+        </div>
+
+        <div class="online">
+            <span class="dot"></span>
+            CHANNEL ONLINE
+        </div>
+
+    </div>
+
+</div>
+
+
+<!-- MAIN -->
+
+<main class="main">
+
+    <div class="card">
+
+        <div class="telegram-icon">
+            <span>➤</span>
+        </div>
+
+        <div class="tag">
+            ◈ OFFICIAL TELEGRAM CHANNEL
+        </div>
+
+        <h1>
+            <span>OFFICIAL</span><br>
+            AG HACKING
+        </h1>
+
+        <p class="subtitle">
+            Welcome to the official AG HACKING network.
+            Get announcements, releases, updates and
+            exclusive community content in one place.
+        </p>
+
+
+        <div class="channel-status">
+            <span class="dot"></span>
+            <b>ONLINE</b>
+            <span>•</span>
+            OFFICIAL CHANNEL
+        </div>
+
+
+        <div class="info">
+
+            <div class="info-box">
+                <strong>AG</strong>
+                <span>Identity</span>
+            </div>
+
+            <div class="info-box">
+                <strong>24/7</strong>
+                <span>Updates</span>
+            </div>
+
+        </div>
+
+
+        <!-- TELEGRAM -->
+
+        <a
+            href="https://t.me/OfficialShaka"
+            class="join"
+            target="_blank"
+            rel="noopener noreferrer"
+        >
+            ✈ JOIN OFFICIAL CHANNEL
+        </a>
+
+        <div class="note">
+            You will be redirected to Telegram
+        </div>
+
+
+        <div class="footer">
+            AG HACKING // DIGITAL COMMAND CENTER
+            <br><br>
+            <b>OFFICIAL • SECURE • CONNECTED</b>
+        </div>
+
+    </div>
+
+</main>
+
+
+<script>
+
+/* PARTICLES */
+
+const canvas = document.getElementById("particles");
+const ctx = canvas.getContext("2d");
+
+let particles = [];
+let width;
+let height;
+
+function resize(){
+
+    width = canvas.width = window.innerWidth;
+    height = canvas.height = window.innerHeight;
+
+}
+
+resize();
+
+window.addEventListener("resize", resize);
+
+
+for(let i=0;i<65;i++){
+
+    particles.push({
+
+        x:Math.random()*window.innerWidth,
+        y:Math.random()*window.innerHeight,
+
+        vx:(Math.random()-.5)*.28,
+        vy:(Math.random()-.5)*.28,
+
+        size:Math.random()*1.5+.3
+
+    });
+
+}
+
+
+function animate(){
+
+    ctx.clearRect(0,0,width,height);
+
+    for(let i=0;i<particles.length;i++){
+
+        const p = particles[i];
+
+        p.x += p.vx;
+        p.y += p.vy;
+
+
+        if(p.x<0 || p.x>width){
+            p.vx *= -1;
+        }
+
+        if(p.y<0 || p.y>height){
+            p.vy *= -1;
+        }
+
+
+        ctx.beginPath();
+
+        ctx.arc(
+            p.x,
+            p.y,
+            p.size,
+            0,
+            Math.PI*2
+        );
+
+        ctx.fillStyle =
+            i%3===0
+            ? "rgba(34,211,238,.55)"
+            : "rgba(167,139,250,.45)";
+
+        ctx.fill();
+
+
+        for(let j=i+1;j<particles.length;j++){
+
+            const q = particles[j];
+
+            const dx = p.x-q.x;
+            const dy = p.y-q.y;
+
+            const distance =
+                Math.sqrt(dx*dx+dy*dy);
+
+
+            if(distance<105){
+
+                ctx.beginPath();
+
+                ctx.moveTo(p.x,p.y);
+                ctx.lineTo(q.x,q.y);
+
+                ctx.strokeStyle =
+                    "rgba(139,92,246,"+
+                    (1-distance/105)*.12+
+                    ")";
+
+                ctx.lineWidth=.5;
+
+                ctx.stroke();
+
+            }
+
+        }
+
+    }
+
+    requestAnimationFrame(animate);
+
+}
+
+animate();
+
+</script>
+
+</body>
+  </html>
