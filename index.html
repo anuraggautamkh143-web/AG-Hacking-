@@ -1,66 +1,430 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>AG HACKING</title>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 
-    <style>
-        * {
-            box-sizing: border-box;
-        }
+<title>AG HACKING | Official</title>
 
-        body {
-            margin: 0;
-            min-height: 100vh;
-            display: flex;
-            justify-content: center;
-            align-items: center;
-            background: #0b0b0f;
-            color: white;
-            font-family: Arial, sans-serif;
-            text-align: center;
-        }
+<style>
+*{
+    margin:0;
+    padding:0;
+    box-sizing:border-box;
+    font-family:Arial,Helvetica,sans-serif;
+}
 
-        .box {
-            width: 90%;
-            max-width: 500px;
-            padding: 40px 25px;
-            border-radius: 20px;
-            background: #15151c;
-            box-shadow: 0 0 30px rgba(255,255,255,0.08);
-        }
+html{
+    scroll-behavior:smooth;
+}
 
-        h1 {
-            margin: 0 0 15px;
-            font-size: 42px;
-        }
+body{
+    background:#07070b;
+    color:#fff;
+    overflow-x:hidden;
+}
 
-        p {
-            color: #aaa;
-            font-size: 17px;
-        }
+/* Animated background */
+body::before{
+    content:"";
+    position:fixed;
+    width:500px;
+    height:500px;
+    background:rgba(120,80,255,.15);
+    filter:blur(120px);
+    border-radius:50%;
+    top:-150px;
+    left:-150px;
+    z-index:-1;
+}
 
-        .btn {
-            display: inline-block;
-            margin-top: 20px;
-            padding: 13px 25px;
-            border-radius: 10px;
-            background: white;
-            color: black;
-            text-decoration: none;
-            font-weight: bold;
-        }
-    </style>
+body::after{
+    content:"";
+    position:fixed;
+    width:450px;
+    height:450px;
+    background:rgba(0,180,255,.10);
+    filter:blur(120px);
+    border-radius:50%;
+    bottom:-150px;
+    right:-150px;
+    z-index:-1;
+}
+
+/* Navbar */
+nav{
+    position:fixed;
+    top:0;
+    width:100%;
+    padding:18px 7%;
+    display:flex;
+    justify-content:space-between;
+    align-items:center;
+    background:rgba(7,7,11,.75);
+    backdrop-filter:blur(15px);
+    border-bottom:1px solid rgba(255,255,255,.08);
+    z-index:100;
+}
+
+.logo{
+    font-size:22px;
+    font-weight:900;
+    letter-spacing:2px;
+}
+
+.logo span{
+    color:#8b5cf6;
+}
+
+nav a{
+    color:#aaa;
+    text-decoration:none;
+    margin-left:20px;
+    font-size:14px;
+}
+
+nav a:hover{
+    color:#fff;
+}
+
+/* Hero */
+.hero{
+    min-height:100vh;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+    text-align:center;
+    padding:100px 20px 50px;
+}
+
+.hero-box{
+    max-width:800px;
+}
+
+.badge{
+    display:inline-block;
+    padding:8px 16px;
+    border:1px solid rgba(139,92,246,.4);
+    border-radius:30px;
+    color:#b99cff;
+    background:rgba(139,92,246,.08);
+    font-size:13px;
+    margin-bottom:22px;
+}
+
+h1{
+    font-size:clamp(48px,12vw,90px);
+    font-weight:900;
+    letter-spacing:4px;
+    line-height:1;
+}
+
+h1 span{
+    background:linear-gradient(90deg,#fff,#9b7cff,#5ee7ff);
+    -webkit-background-clip:text;
+    color:transparent;
+}
+
+.hero p{
+    margin:25px auto;
+    max-width:600px;
+    color:#999;
+    font-size:17px;
+    line-height:1.7;
+}
+
+.buttons{
+    display:flex;
+    justify-content:center;
+    gap:15px;
+    flex-wrap:wrap;
+    margin-top:30px;
+}
+
+.btn{
+    padding:14px 25px;
+    border-radius:12px;
+    text-decoration:none;
+    font-weight:bold;
+    transition:.3s;
+}
+
+.primary{
+    background:#fff;
+    color:#08080c;
+}
+
+.secondary{
+    border:1px solid #333;
+    color:#fff;
+    background:#111116;
+}
+
+.btn:hover{
+    transform:translateY(-3px);
+    box-shadow:0 10px 30px rgba(139,92,246,.2);
+}
+
+/* Sections */
+section{
+    padding:90px 7%;
+}
+
+.section-title{
+    text-align:center;
+    margin-bottom:45px;
+}
+
+.section-title h2{
+    font-size:35px;
+}
+
+.section-title p{
+    color:#777;
+    margin-top:10px;
+}
+
+/* Cards */
+.cards{
+    max-width:1000px;
+    margin:auto;
+    display:grid;
+    grid-template-columns:repeat(auto-fit,minmax(220px,1fr));
+    gap:18px;
+}
+
+.card{
+    padding:28px;
+    border-radius:18px;
+    background:rgba(20,20,27,.7);
+    border:1px solid rgba(255,255,255,.08);
+    transition:.3s;
+}
+
+.card:hover{
+    transform:translateY(-7px);
+    border-color:rgba(139,92,246,.5);
+}
+
+.icon{
+    font-size:30px;
+    margin-bottom:18px;
+}
+
+.card h3{
+    margin-bottom:10px;
+}
+
+.card p{
+    color:#888;
+    line-height:1.6;
+    font-size:14px;
+}
+
+/* Download */
+.download{
+    max-width:900px;
+    margin:auto;
+    padding:45px 25px;
+    text-align:center;
+    border-radius:25px;
+    background:linear-gradient(
+        135deg,
+        rgba(139,92,246,.12),
+        rgba(0,200,255,.06)
+    );
+    border:1px solid rgba(255,255,255,.1);
+}
+
+.download p{
+    color:#888;
+    margin:15px auto 25px;
+}
+
+/* Footer */
+footer{
+    text-align:center;
+    padding:35px 20px;
+    border-top:1px solid rgba(255,255,255,.08);
+    color:#666;
+    font-size:13px;
+}
+
+footer strong{
+    color:#aaa;
+}
+
+/* Mobile */
+@media(max-width:600px){
+
+    nav{
+        padding:16px 5%;
+    }
+
+    nav .links{
+        display:none;
+    }
+
+    section{
+        padding:70px 5%;
+    }
+
+    h1{
+        letter-spacing:2px;
+    }
+
+    .hero p{
+        font-size:15px;
+    }
+}
+</style>
 </head>
 
 <body>
 
-    <div class="box">
-        <h1>AG HACKING</h1>
-        <p>Welcome to the official website.</p>
-        <a class="btn" href="#">GET STARTED</a>
+<nav>
+    <div class="logo">AG <span>HACKING</span></div>
+
+    <div class="links">
+        <a href="#home">Home</a>
+        <a href="#features">Features</a>
+        <a href="#download">Download</a>
     </div>
+</nav>
+
+
+<!-- HERO -->
+<section class="hero" id="home">
+
+    <div class="hero-box">
+
+        <div class="badge">
+            ⚡ OFFICIAL AG HACKING
+        </div>
+
+        <h1>
+            AG <span>HACKING</span>
+        </h1>
+
+        <p>
+            Welcome to the official AG HACKING website.
+            Explore our latest projects, updates and resources
+            in one place.
+        </p>
+
+        <div class="buttons">
+
+            <a class="btn primary"
+               href="#download">
+                Explore Now
+            </a>
+
+            <a class="btn secondary"
+               href="https://t.me/">
+                Join Telegram
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FEATURES -->
+<section id="features">
+
+    <div class="section-title">
+        <h2>What We Offer</h2>
+        <p>Simple. Clean. Professional.</p>
+    </div>
+
+    <div class="cards">
+
+        <div class="card">
+            <div class="icon">⚡</div>
+            <h3>Latest Updates</h3>
+            <p>
+                Get the latest project updates
+                and important announcements.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🚀</div>
+            <h3>Fast & Simple</h3>
+            <p>
+                A clean and lightweight experience
+                designed for mobile users.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">🔒</div>
+            <h3>Reliable</h3>
+            <p>
+                Organized resources with a simple
+                and professional interface.
+            </p>
+        </div>
+
+        <div class="card">
+            <div class="icon">💎</div>
+            <h3>Premium Design</h3>
+            <p>
+                Modern dark UI with smooth animations
+                and responsive layout.
+            </p>
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- DOWNLOAD -->
+<section id="download">
+
+    <div class="download">
+
+        <div class="badge">
+            📥 DOWNLOAD CENTER
+        </div>
+
+        <h2>Latest Resources</h2>
+
+        <p>
+            Download the latest available files
+            and resources from AG HACKING.
+        </p>
+
+        <div class="buttons">
+
+            <!-- Yahan apna actual download link lagana -->
+            <a class="btn primary"
+               href="https://t.me/OfficialShaka/40">
+                Download Now Clone
+            </a>
+
+            <a class="btn secondary"
+               href="https://t.me/OfficialShaka">
+                Telegram Channel
+            </a>
+
+        </div>
+
+    </div>
+
+</section>
+
+
+<!-- FOOTER -->
+<footer>
+
+    © 2026 <strong>AG HACKING</strong>.
+    All Rights Reserved.
+
+</footer>
 
 </body>
 </html>
